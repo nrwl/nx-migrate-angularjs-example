@@ -1,3 +1,5 @@
+import template from './editor.html';
+
 function EditorConfig($stateProvider) {
   'ngInject';
 
@@ -6,7 +8,7 @@ function EditorConfig($stateProvider) {
     url: '/editor/:slug',
     controller: 'EditorCtrl',
     controllerAs: '$ctrl',
-    templateUrl: 'editor/editor.html',
+    template,
     title: 'Editor',
     resolve:{
       auth: function(User) {

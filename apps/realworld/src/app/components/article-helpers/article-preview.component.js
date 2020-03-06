@@ -1,8 +1,10 @@
+import template from './article-preview.html'; 
+
 let ArticlePreview = {
   bindings: {
     article: '='
   },
-  templateUrl: 'components/article-helpers/article-preview.html'
+  template
 };
 
 export default ArticlePreview;

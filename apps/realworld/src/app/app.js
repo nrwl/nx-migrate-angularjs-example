@@ -21,7 +21,6 @@ import './editor';
 // Create and bootstrap application
 const requires = [
   'ui.router',
-  'templates',
   'app.layout',
   'app.components',
   'app.home',

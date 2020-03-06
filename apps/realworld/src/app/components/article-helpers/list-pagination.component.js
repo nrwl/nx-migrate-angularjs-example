@@ -1,3 +1,5 @@
+import template from './list-pagination.html';
+
 class ListPaginationCtrl {
   constructor($scope) {
     'ngInject';
@@ -29,7 +31,7 @@ let ListPagination= {
     currentPage: '='
   },
   controller: ListPaginationCtrl,
-  templateUrl: 'components/article-helpers/list-pagination.html'
+  template
 };
 
 export default ListPagination;

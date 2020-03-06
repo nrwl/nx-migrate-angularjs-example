@@ -1,3 +1,5 @@
+import template from './follow-btn.html';
+
 class FollowBtnCtrl {
   constructor(Profile, User, $state) {
     'ngInject';
@@ -44,7 +46,7 @@ let FollowBtn= {
     user: '='
   },
   controller: FollowBtnCtrl,
-  templateUrl: 'components/buttons/follow-btn.html'
+  template
 };
 
 export default FollowBtn;

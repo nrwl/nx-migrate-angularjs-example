@@ -1,3 +1,5 @@
+import template from './comment.html';
+
 class CommentCtrl {
   constructor(User) {
     'ngInject';
@@ -17,7 +19,7 @@ let Comment = {
     deleteCb: '&'
   },
   controller: CommentCtrl,
-  templateUrl: 'article/comment.html'
+  template
 };
 
 export default Comment;

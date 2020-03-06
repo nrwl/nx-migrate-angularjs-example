@@ -1,3 +1,5 @@
+import template from './settings.html';
+
 function SettingsConfig($stateProvider) {
   'ngInject';
 
@@ -6,7 +8,7 @@ function SettingsConfig($stateProvider) {
     url: '/settings',
     controller: 'SettingsCtrl',
     controllerAs: '$ctrl',
-    templateUrl: 'settings/settings.html',
+    template,
     title: 'Settings',
     resolve: {
       auth: function(User) {

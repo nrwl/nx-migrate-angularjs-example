@@ -1,3 +1,5 @@
+import template from './article.html';
+
 function ArticleConfig($stateProvider) {
   'ngInject';
 
@@ -6,7 +8,7 @@ function ArticleConfig($stateProvider) {
     url: '/article/:slug',
     controller: 'ArticleCtrl',
     controllerAs: '$ctrl',
-    templateUrl: 'article/article.html',
+    template,
     title: 'Article',
     resolve: {
       article: function(Articles, $state, $stateParams) {

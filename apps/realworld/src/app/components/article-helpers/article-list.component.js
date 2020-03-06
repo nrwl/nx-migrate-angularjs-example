@@ -1,3 +1,5 @@
+import template from './article-list.html';
+
 class ArticleListCtrl {
   constructor(Articles, $scope) {
     'ngInject';
@@ -79,7 +81,7 @@ let ArticleList = {
     listConfig: '='
   },
   controller: ArticleListCtrl,
-  templateUrl: 'components/article-helpers/article-list.html'
+  template
 };
 
 export default ArticleList;

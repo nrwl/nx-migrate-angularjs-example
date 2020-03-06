@@ -1,3 +1,5 @@
+import template from './footer.html';
+
 class AppFooterCtrl {
   constructor(AppConstants) {
     'ngInject';
@@ -10,7 +12,7 @@ class AppFooterCtrl {
 
 let AppFooter = {
   controller: AppFooterCtrl,
-  templateUrl: 'layout/footer.html'
+  template
 };
 
 export default AppFooter;

@@ -9,23 +9,50 @@
       "prefix": "nx-migrate-angularjs",
       "architect": {
         "build": {
-          "builder": "@nrwl/workspace:run-commands",
+          "builder": "@nrwl/web:build",
           "options": {
-            "commands": [
-              {
-                "command": "npx gulp --gulpfile apps/realworld/gulpfile.js build"
-              }
-            ]
+            "outputPath": "dist/apps/realworld",
+            "index": "apps/realworld/src/index.html",
+            "main": "apps/realworld/src/main.ts",
+            "polyfills": "apps/realworld/src/polyfills.ts",
+            "tsConfig": "apps/realworld/tsconfig.app.json",
+            "assets": [
+              "apps/realworld/src/favicon.ico",
+              "apps/realworld/src/assets"
+            ],
+            "styles": ["apps/realworld/src/styles.css"],
+            "scripts": [],
+            "webpackConfig": "apps/realworld/webpack.config"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/realworld/src/environments/environment.ts",
+                  "with": "apps/realworld/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
           }
         },
         "serve": {
-          "builder": "@nrwl/workspace:run-commands",
+          "builder": "@nrwl/web:dev-server",
           "options": {
-            "commands": [
-              {
-                "command": "npx gulp --gulpfile apps/realworld/gulpfile.js"
-              }
-            ]
+            "buildTarget": "realworld:build"
           }
         },
         "extract-i18n": {
