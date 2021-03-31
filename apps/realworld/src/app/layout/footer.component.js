@@ -12,7 +12,7 @@ class AppFooterCtrl {
 
 let AppFooter = {
   controller: AppFooterCtrl,
-  template
+  template,
 };
 
 export default AppFooter;

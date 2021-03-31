@@ -8,9 +8,7 @@ module.exports = (config, context) => {
       rules: [
         {
           test: /\.html$/,
-          use: [
-            { loader: 'raw-loader' }
-          ]
+          use: [{ loader: 'raw-loader' }],
         },
         // Load js files through Babel
         {
@@ -18,10 +16,10 @@ module.exports = (config, context) => {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-            plugins: ['angularjs-annotate']
-          }
-        }
-      ]
-    }
+            plugins: ['angularjs-annotate'],
+          },
+        },
+      ],
+    },
   };
 };

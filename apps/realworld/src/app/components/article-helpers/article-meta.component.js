@@ -1,11 +1,11 @@
 import template from './article-meta.html';
 
-let ArticleMeta= {
+let ArticleMeta = {
   bindings: {
-    article: '='
+    article: '=',
   },
   transclude: true,
-  template
+  template,
 };
 
 export default ArticleMeta;

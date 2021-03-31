@@ -2,9 +2,9 @@ import template from './list-errors.html';
 
 let ListErrors = {
   bindings: {
-    errors: '='
+    errors: '=',
   },
-  template
-}
+  template,
+};
 
 export default ListErrors;

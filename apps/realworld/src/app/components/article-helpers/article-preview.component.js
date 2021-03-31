@@ -1,10 +1,10 @@
-import template from './article-preview.html'; 
+import template from './article-preview.html';
 
 let ArticlePreview = {
   bindings: {
-    article: '='
+    article: '=',
   },
-  template
+  template,
 };
 
 export default ArticlePreview;

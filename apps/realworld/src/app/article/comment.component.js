@@ -5,21 +5,20 @@ class CommentCtrl {
     'ngInject';
 
     if (User.current) {
-      this.canModify = (User.current.username === this.data.author.username);
+      this.canModify = User.current.username === this.data.author.username;
     } else {
       this.canModify = false;
     }
-
   }
 }
 
 let Comment = {
   bindings: {
     data: '=',
-    deleteCb: '&'
+    deleteCb: '&',
   },
   controller: CommentCtrl,
-  template
+  template,
 };
 
 export default Comment;

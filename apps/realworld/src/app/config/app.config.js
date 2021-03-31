@@ -1,7 +1,12 @@
-import authInterceptor from './auth.interceptor'
+import authInterceptor from './auth.interceptor';
 import template from '../layout/app-view.html';
 
-function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterProvider) {
+function AppConfig(
+  $httpProvider,
+  $stateProvider,
+  $locationProvider,
+  $urlRouterProvider
+) {
   'ngInject';
 
   $httpProvider.interceptors.push(authInterceptor);
@@ -12,19 +17,17 @@ function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterP
   */
   // $locationProvider.html5Mode(true);
 
-  $stateProvider
-  .state('app', {
+  $stateProvider.state('app', {
     abstract: true,
     template,
     resolve: {
-      auth: function(User) {
+      auth: function (User) {
         return User.verifyAuth();
-      }
-    }
+      },
+    },
   });
 
   $urlRouterProvider.otherwise('/');
-
 }
 
 export default AppConfig;
