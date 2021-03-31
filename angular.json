@@ -3,7 +3,6 @@
   "projects": {
     "realworld": {
       "projectType": "application",
-      "schematics": {},
       "root": "apps/realworld",
       "sourceRoot": "apps/realworld/src",
       "prefix": "nx-migrate-angularjs",
@@ -35,13 +34,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "apps/realworld/tsconfig.app.json",
-              "apps/realworld/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/realworld/**"]
+            "lintFilePatterns": [
+              "apps/realworld/src/**/*.ts",
+              "apps/realworld/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -75,10 +73,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": "apps/realworld-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**", "!apps/realworld-e2e/**"]
+            "lintFilePatterns": ["apps/realworld-e2e/**/*.ts"]
           }
         }
       }
@@ -89,11 +86,18 @@
   },
   "schematics": {
     "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
       "unitTestRunner": "karma",
       "e2eTestRunner": "protractor"
     },
     "@nrwl/angular:library": {
+      "style": "css",
+      "linter": "eslint",
       "unitTestRunner": "karma"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
     }
   },
   "defaultProject": "realworld"

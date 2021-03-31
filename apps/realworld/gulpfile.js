@@ -14,14 +14,14 @@ var merge = require('merge-stream');
 var jsFiles = 'src/app/**/*.js';
 var viewFiles = 'src/app/**/*.html';
 
-var interceptErrors = function(error) {
+var interceptErrors = function (error) {
   var args = Array.prototype.slice.call(arguments);
 
   // Send error to notification center with gulp-notify
   notify
     .onError({
       title: 'Compile Error',
-      message: '<%= error.message %>'
+      message: '<%= error.message %>',
     })
     .apply(this, args);
 
@@ -29,7 +29,7 @@ var interceptErrors = function(error) {
   this.emit('end');
 };
 
-gulp.task('browserify', ['views'], function() {
+gulp.task('browserify', ['views'], function () {
   return (
     browserify('./src/main.js')
       .transform(babelify, { presets: ['es2015'] })
@@ -43,19 +43,19 @@ gulp.task('browserify', ['views'], function() {
   );
 });
 
-gulp.task('html', function() {
+gulp.task('html', function () {
   return gulp
     .src('src/index.html')
     .on('error', interceptErrors)
     .pipe(gulp.dest('../../dist/apps/realworld/'));
 });
 
-gulp.task('views', function() {
+gulp.task('views', function () {
   return gulp
     .src(viewFiles)
     .pipe(
       templateCache({
-        standalone: true
+        standalone: true,
       })
     )
     .on('error', interceptErrors)
@@ -65,7 +65,7 @@ gulp.task('views', function() {
 
 // This task is used for building production ready
 // minified JS/CSS files into the dist/ folder
-gulp.task('build', ['html', 'browserify'], function() {
+gulp.task('build', ['html', 'browserify'], function () {
   var html = gulp
     .src('../../dist/apps/realworld/index.html')
     .pipe(gulp.dest('../../dist/apps/realworld/'));
@@ -78,14 +78,14 @@ gulp.task('build', ['html', 'browserify'], function() {
   return merge(html, js);
 });
 
-gulp.task('default', ['html', 'browserify'], function() {
+gulp.task('default', ['html', 'browserify'], function () {
   browserSync.init(['../../dist/apps/realworld/**/**.**'], {
     server: '../../dist/apps/realworld',
     port: 4000,
     notify: false,
     ui: {
-      port: 4001
-    }
+      port: 4001,
+    },
   });
 
   gulp.watch('src/index.html', ['html']);
