@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "realworld": "apps/realworld",
+    "realworld-e2e": "apps/realworld-e2e"
+  }
+}

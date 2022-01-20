@@ -1,0 +1,85 @@
+{
+  "projectType": "application",
+  "root": "apps/realworld",
+  "sourceRoot": "apps/realworld/src",
+  "prefix": "nx-migrate-angularjs",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "options": {
+        "outputPath": "dist/apps/realworld",
+        "index": "apps/realworld/src/index.html",
+        "main": "apps/realworld/src/main.js",
+        "polyfills": "apps/realworld/src/polyfills.ts",
+        "tsConfig": "apps/realworld/tsconfig.app.json",
+        "assets": [
+          "apps/realworld/src/favicon.ico",
+          "apps/realworld/src/assets"
+        ],
+        "styles": ["apps/realworld/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "apps/realworld/webpack.config",
+        "buildLibsFromSource": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/realworld/src/environments/environment.ts",
+              "with": "apps/realworld/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "extractCss": true,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "realworld:build"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "realworld:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/realworld/src/**/*.ts",
+          "apps/realworld/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "apps/realworld/src/test.ts",
+        "tsConfig": "apps/realworld/tsconfig.spec.json",
+        "karmaConfig": "apps/realworld/karma.conf.js",
+        "polyfills": "apps/realworld/src/polyfills.ts",
+        "styles": [],
+        "scripts": [],
+        "assets": []
+      }
+    }
+  },
+  "tags": []
+}

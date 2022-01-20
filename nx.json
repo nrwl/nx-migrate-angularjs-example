@@ -21,17 +21,37 @@
         "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "Yzg5NTEyYTQtODZlYS00ODZhLWJkZTMtMzI2OGJiODY0NGRlfHJlYWQtd3JpdGU=",
         "canTrackAnalytics": false,
-        "showUsageWarnings": true
+        "showUsageWarnings": true,
+        "parallel": 1
       }
     }
   },
-  "projects": {
-    "realworld": {
-      "tags": []
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "realworld",
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "karma",
+      "e2eTestRunner": "protractor"
     },
-    "realworld-e2e": {
-      "tags": [],
-      "implicitDependencies": ["realworld"]
+    "@nrwl/angular:library": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "karma"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
     }
   }
 }
